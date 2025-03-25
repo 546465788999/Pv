@@ -1,12 +1,5 @@
 const gradient = require("gradient-string")
-console.log(gradient('blue', 'purple')(`
-███████╗██╗  ██╗    ██╗  ██╗ ██████╗ ██╗  ██╗
-██╔════╝╚██╗██╔╝    ██║  ██║██╔═████╗██║  ██║
-█████╗   ╚███╔╝     ███████║██║██╔██║███████║
-██╔══╝   ██╔██╗     ╚════██║████╔╝██║╚════██║
-███████╗██╔╝ ██╗         ██║╚██████╔╝     ██║
-╚══════╝╚═╝  ╚═╝         ╚═╝ ╚═════╝      ╚═╝
-`));
+
 const discord = require("discord.js-selfbot-v13");
 const fetch = require("node-fetch");
 const readline = require("readline")
@@ -25,7 +18,7 @@ input.question(gradient.mind("[+] What is your token ? "), (token) => {
 		  const guild = client.guilds.cache.get(id)
 		  if(!guild) {
 			  console.log(gradient('cyan', "purple")(`[+] Please ensure that the Guild ID you have provided is valid :)`))
-			  console.log(gradient('blue', "purple")(`[+] Thanks for using the LockURL - Made by ex#0404 :)`))
+			  
 			  input.close()
 		  } else {
 			  input.question(gradient.mind(`[+] What is the Vanity URL ? `), (url) => {
@@ -36,7 +29,7 @@ input.question(gradient.mind("[+] What is your token ? "), (token) => {
 	  })
   }).catch(() => {
 	  console.log(gradient('cyan', "purple")(`[+] Please ensure that the token you have provided is valid :)`))
-	  console.log(gradient('blue', "purple")(`[+] Thanks for using the LockURL - Made by ex#0404 :)`))
+	  
 	  input.close()
   })
 });
@@ -71,7 +64,7 @@ async function setVanityURL(guildID, vanityURL, token) {
                 
                 console.log(gradient('blue', 'cyan')(`[+] Rate limited the vanity ${vanityURL} for ${hours} hours and ${minutes} minutes. (${attempt - 1}) :)`));
 				console.log(gradient('purple', 'blue')(`[+] Retrying in ${hours} hours and ${minutes} minutes... :)`))
-				console.log(gradient('blue', "purple")(`[+] Thanks for using the LockURL - Made by ex#0404 :)`))
+				
 				attempt = 0;
 				rateLimitedAttempts = 0;
                 await new Promise(resolve => setTimeout(resolve, retryAfterSeconds * 1000));
@@ -80,7 +73,7 @@ async function setVanityURL(guildID, vanityURL, token) {
             }
         } else {
             console.error(gradient('cyan', 'purple')(`[+] Failed to set Vanity URL (${response.statusText})`));
-			console.log(gradient('blue', "purple")(`[+] Thanks for using the LockURL - Made by ex#0404 :)`))
+
             await new Promise(resolve => setTimeout(resolve, retryInterval));
         }
     }
